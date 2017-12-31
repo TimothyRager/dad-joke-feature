@@ -1,6 +1,6 @@
 export class Joke {
 
-  id: string;
+  jokeId: string;
   jokeText: string;
   status: number;
 
@@ -9,6 +9,6 @@ export class Joke {
   }
 
   toString(): string {
-    return '\nJoke id: ' + this.id + '\nJoke: ' + this.jokeText + '\nStatus: ' + this.status + '\n';
+    return '\nJoke id: ' + this.jokeId + '\nJoke: ' + this.jokeText + '\nStatus: ' + this.status + '\n';
   }
 }
