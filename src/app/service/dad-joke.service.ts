@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Joke} from '../models/joke';
 import {API_URL} from '../../environments/environment';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class DadJokeService {
@@ -14,24 +15,29 @@ export class DadJokeService {
   }
 
   getJokeById(id: string): Joke {
+
     const returnJoke: Joke = new Joke;
     console.log(id);
     this.http.get<Joke>(this.jokesUrl + '/' + id).subscribe(jk => Object.assign(returnJoke, jk));
     return returnJoke;
   }
 
-  getRandomJoke(): Joke {
-    const returnJoke: Joke = new Joke;
-    console.log('Random Joke');
-    this.http.get<Joke>(this.jokesUrl).subscribe(jk => Object.assign(returnJoke, jk));
-    return returnJoke;
+  getRandomJoke(): Observable<Joke> {
+    return this.http.get<Joke>(this.jokesUrl);
   }
 
   getAllCachedJokes(): Joke[] {
-    const returnJokeArray: Joke[] = [];
-    console.log('Cached Jokes');
-    this.http.get<Joke[]>(this.jokesUrl + '/all').subscribe(jka => Object.assign(returnJokeArray, jka));
-    return returnJokeArray;
+
+    const getJokes = this.http.get<Joke[]>(this.jokesUrl + '/all');
+    const tempJokes: Joke[] = [];
+    getJokes.subscribe(next => {
+      for (const x of next) {
+        const jokeHolder: Joke = new Joke(x);
+        tempJokes.push(jokeHolder);
+      }
+    });
+    return tempJokes;
   }
+
 
 }

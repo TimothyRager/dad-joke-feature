@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DadJokeService} from '../service/dad-joke.service';
 import {Joke} from '../models/joke';
-import {DadJokeDisplayComponent} from '../dad-joke-display/dad-joke-display.component';
 
 @Component({
   selector: 'app-dad-joke-request',
@@ -9,11 +8,16 @@ import {DadJokeDisplayComponent} from '../dad-joke-display/dad-joke-display.comp
   styleUrls: ['./dad-joke-request.component.css']
 })
 export class DadJokeRequestComponent implements OnInit {
-  constructor(private jokeService: DadJokeService) { }
+
+    joke: Joke;
+
+  constructor(private jokeService: DadJokeService) {
+  }
 
   getRandom(): void {
-    const dispArea = document.getElementById('JokeDisplay');
-    dispArea.innerText = this.jokeService.getRandomJoke().toString();
+    this.jokeService.getRandomJoke().subscribe(jk => {
+      this.joke = new Joke (jk);
+    });
   }
 
   getCached(): Joke[] {
@@ -21,6 +25,10 @@ export class DadJokeRequestComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    this.jokeService.getRandomJoke()
+      .subscribe(jk => {
 
+        this.joke = new Joke (jk);
+      });
+  }
 }

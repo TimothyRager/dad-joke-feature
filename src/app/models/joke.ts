@@ -5,7 +5,6 @@ export class Joke {
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
-    console.log(this);
   }
 
   toString(): string {
