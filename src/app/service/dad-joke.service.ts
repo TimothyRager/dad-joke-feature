@@ -1,17 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Joke} from '../models/joke';
 import {API_URL} from '../../environments/environment';
-
-declare let EventSource: any;
 
 @Injectable()
 export class DadJokeService {
 
   private jokesUrl = API_URL + '/jokes';
 
-  httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+  private httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
   constructor(private http: HttpClient) {
   }

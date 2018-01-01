@@ -1,13 +1,14 @@
 export class Joke {
 
-  jokeId: string;
-  jokeText: string;
+  id: string;
+  joke: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
+    console.log(this);
   }
 
   toString(): string {
-    return '\nJoke id: ' + this.jokeId + '\nJoke: ' + this.jokeText + '\n';
+    return 'Joke: ' + this.joke;
   }
 }

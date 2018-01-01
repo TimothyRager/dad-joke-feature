@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DadJokeRequestComponent } from './dad-joke-request/dad-joke-request.component';
 import { DadJokeDisplayComponent } from './dad-joke-display/dad-joke-display.component';
+import {DadJokeService} from './service/dad-joke.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -14,9 +16,10 @@ import { DadJokeDisplayComponent } from './dad-joke-display/dad-joke-display.com
     DadJokeDisplayComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DadJokeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

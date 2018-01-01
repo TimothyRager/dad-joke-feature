@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Joke} from "../models/joke";
+import {Joke} from '../models/joke';
+import {DadJokeService} from '../service/dad-joke.service';
 
 @Component({
   selector: 'app-dad-joke-display',
@@ -8,10 +9,19 @@ import {Joke} from "../models/joke";
 })
 export class DadJokeDisplayComponent implements OnInit {
 
-  @Input()
-  joke: Joke;
+  @Input() joke: Joke;
+  @Input() jokes: Joke[];
 
-  constructor(joke: Joke) {this.joke = joke; }
+
+  constructor(private jokeService: DadJokeService) {}
+
+  setJoke(joke: Joke): void {
+    this.joke = joke;
+  }
+
+  setJokes(jokes: Joke[]): void {
+    this.jokes = jokes;
+  }
 
   ngOnInit() {
   }

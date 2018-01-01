@@ -1,3 +1,8 @@
-<p>
-  dad-joke-request works!
-</p>
+<div class="jokeRequestDropdown">
+  <button class="dropbtn">Get A Joke!</button>
+  <div class="jokeRequestOptions">
+    <button (click)="getRandom()">Random Joke</button>
+    <button>Joke By ID</button>
+    <button (click)="getCached()">All Jokes</button>
+  </div>
+</div>
