@@ -9,7 +9,7 @@ import {Joke} from "../models/joke";
 export class DadJokeDisplayComponent implements OnInit {
 
   @Input()
-  joke:Joke;
+  joke: Joke;
 
   constructor(joke: Joke) {this.joke = joke; }
 
