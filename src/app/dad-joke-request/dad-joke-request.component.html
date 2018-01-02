@@ -2,13 +2,16 @@
   <button class="dropbtn">Get A Joke!</button>
   <div class="jokeRequestOptions">
     <p><button class="optionbtn" (click)="getRandom()">Random Joke</button></p>
-    <p><button class="optionbtn" (click)="getById(inputText.value)">Joke By ID</button><input #inputText placeholder="Enter Joke ID Here"></p>
+    <p><input #inputText placeholder="Enter Joke ID Here"><button class="optionbtn" (click)="getById(inputText.value)">Joke By ID</button></p>
     <p><button class="optionbtn" (click)="getCached()">All Jokes</button></p>
   </div>
 </div>
 
 <div id="DisplayArea">
-  {{joke}}
+  <p *ngIf="displaySingle" id="visToggle1">{{joke}}</p>
+  <div *ngFor="let jk of jokes" id="visToggle2">
+    <p *ngIf="!displaySingle">ID: {{jk.id}} | {{jk}}</p>
+  </div>
 </div>
 
      <!--delvers LLC &#45;&#45; 3 written, 4th on the way-->

@@ -8,6 +8,6 @@ export class Joke {
   }
 
   toString(): string {
-    return 'Joke: ' + this.joke;
+    return ('\nJoke: ' + this.joke + '\n');
   }
 }

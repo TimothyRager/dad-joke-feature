@@ -22,17 +22,9 @@ export class DadJokeService {
     return this.http.get<Joke>(this.jokesUrl);
   }
 
-  getAllCachedJokes(): Joke[] {
+  getAllCachedJokes(): Observable<Joke[]> {
 
-    const getJokes = this.http.get<Joke[]>(this.jokesUrl + '/all');
-    const tempJokes: Joke[] = [];
-    getJokes.subscribe(next => {
-      for (const x of next) {
-        const jokeHolder: Joke = new Joke(x);
-        tempJokes.push(jokeHolder);
-      }
-    });
-    return tempJokes;
+    return this.http.get<Joke[]>(this.jokesUrl + '/all');
   }
 
 

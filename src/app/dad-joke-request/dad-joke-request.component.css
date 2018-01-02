@@ -7,7 +7,7 @@
   border: none;
   cursor: pointer;
 }
-
+/* Option buttons in the dropdown */
 .optionbtn {
   padding: 5px;
   font-size: 10pt;
@@ -38,13 +38,18 @@
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-.jokeRequestOptions a:hover {background-color: #f1f1f1}
-
 /* Show the dropdown menu on hover */
 .jokeRequestDropdown:hover .jokeRequestOptions {
   display: block;
 }
+
+/*#visToggle1{*/
+  /*display:block;*/
+/*}*/
+
+/*#visToggle2{*/
+  /*display:none;*/
+/*}*/
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .jokeRequestDropdown:hover .dropbtn {
