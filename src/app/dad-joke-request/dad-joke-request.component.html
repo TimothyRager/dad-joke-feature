@@ -1,16 +1,15 @@
 <div class="jokeRequestDropdown">
   <button class="dropbtn">Get A Joke!</button>
   <div class="jokeRequestOptions">
-    <button (click)="getRandom()">Random Joke</button>
-    <button>Joke By ID</button>
-    <button (click)="getCached()">All Jokes</button>
+    <p><button class="optionbtn" (click)="getRandom()">Random Joke</button></p>
+    <p><button class="optionbtn" (click)="getById(inputText.value)">Joke By ID</button><input #inputText placeholder="Enter Joke ID Here"></p>
+    <p><button class="optionbtn" (click)="getCached()">All Jokes</button></p>
   </div>
 </div>
 
 <div id="DisplayArea">
   {{joke}}
 </div>
-
 
      <!--delvers LLC &#45;&#45; 3 written, 4th on the way-->
     <!--Iron Druid Chronicles-->

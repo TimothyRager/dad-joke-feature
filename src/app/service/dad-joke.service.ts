@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Joke} from '../models/joke';
 import {API_URL} from '../../environments/environment';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class DadJokeService {
@@ -14,12 +14,8 @@ export class DadJokeService {
   constructor(private http: HttpClient) {
   }
 
-  getJokeById(id: string): Joke {
-
-    const returnJoke: Joke = new Joke;
-    console.log(id);
-    this.http.get<Joke>(this.jokesUrl + '/' + id).subscribe(jk => Object.assign(returnJoke, jk));
-    return returnJoke;
+  getJokeById(id: string): Observable<Joke> {
+    return this.http.get<Joke>(this.jokesUrl + '/' + id);
   }
 
   getRandomJoke(): Observable<Joke> {

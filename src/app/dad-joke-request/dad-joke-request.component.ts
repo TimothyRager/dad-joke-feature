@@ -20,6 +20,12 @@ export class DadJokeRequestComponent implements OnInit {
     });
   }
 
+  getById(id: string): void {
+    this.jokeService.getJokeById(id).subscribe(jk => {
+      this.joke = new Joke (jk);
+    });
+  }
+
   getCached(): Joke[] {
     return this.jokeService.getAllCachedJokes();
   }
