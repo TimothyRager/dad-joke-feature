@@ -12,8 +12,6 @@ export class DadJokeRequestComponent implements OnInit {
   joke: Joke;
   jokes: Joke[];
   displaySingle: boolean;
-  arrDisp: HTMLElement;
-  singDisp: HTMLElement;
 
   constructor(private jokeService: DadJokeService) {
     this.displaySingle = true;
@@ -42,6 +40,21 @@ export class DadJokeRequestComponent implements OnInit {
       this.displaySingle = false;
     }
     this.jokeService.getAllCachedJokes()
+      .subscribe(next => {
+        const temp: Joke[] = [];
+        for (const x of next) {
+          const jokeHolder: Joke = new Joke(x);
+          temp.push(jokeHolder);
+        }
+        this.jokes = temp;
+      });
+  }
+
+  getSearchResults(searchString: string): void {
+    if (this.displaySingle) {
+      this.displaySingle = false;
+    }
+    this.jokeService.getSearchResults(searchString)
       .subscribe(next => {
         const temp: Joke[] = [];
         for (const x of next) {

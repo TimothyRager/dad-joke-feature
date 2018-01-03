@@ -9,7 +9,7 @@ export class DadJokeService {
 
   private jokesUrl = API_URL + '/jokes';
 
-  private httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+  // private httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
   constructor(private http: HttpClient) {
   }
@@ -25,6 +25,11 @@ export class DadJokeService {
   getAllCachedJokes(): Observable<Joke[]> {
 
     return this.http.get<Joke[]>(this.jokesUrl + '/all');
+  }
+
+  getSearchResults(searchString: string): Observable<Joke[]> {
+
+    return this.http.get<Joke[]>(this.jokesUrl + '/search=' + searchString);
   }
 
 

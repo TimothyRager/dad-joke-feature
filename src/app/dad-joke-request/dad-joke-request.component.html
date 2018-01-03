@@ -2,8 +2,9 @@
   <button class="dropbtn">Get A Joke!</button>
   <div class="jokeRequestOptions">
     <p><button class="optionbtn" (click)="getRandom()">Random Joke</button></p>
-    <p><input #inputText placeholder="Enter Joke ID Here"><button class="optionbtn" (click)="getById(inputText.value)">Joke By ID</button></p>
+    <p><input #inputJokeId placeholder="Enter Joke ID Here"><button class="optionbtn" (click)="getById(inputJokeId.value)">Joke By ID</button></p>
     <p><button class="optionbtn" (click)="getCached()">All Jokes</button></p>
+    <p><input #inputSearchTerm placeholder="Enter Search Term Here"><button class="optionbtn" (click)="getSearchResults(inputSearchTerm.value)">Search For Jokes</button></p>
   </div>
 </div>
 
@@ -14,6 +15,6 @@
   </div>
 </div>
 
-     <!--delvers LLC &#45;&#45; 3 written, 4th on the way-->
-    <!--Iron Druid Chronicles-->
-    <!--Name of the Wind-->
+<!--delvers LLC &#45;&#45; 3 written, 4th on the way-->
+<!--Iron Druid Chronicles-->
+<!--Name of the Wind-->
