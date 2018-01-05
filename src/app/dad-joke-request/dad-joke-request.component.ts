@@ -21,64 +21,47 @@ export class DadJokeRequestComponent implements OnInit {
     if (!this.displaySingle) {
       this.displaySingle = true;
     }
-    this.jokeService.getRandomJoke().subscribe(jk => {
-      this.joke = new Joke (jk);
-    });
+    this.joke = this.jokeService.getJoke();
   }
 
   getById(id: string): void {
     if (!this.displaySingle) {
       this.displaySingle = true;
     }
-    this.jokeService.getJokeById(id).subscribe(jk => {
-      this.joke = new Joke (jk);
-    });
+    this.joke = this.jokeService.getJoke(id);
   }
 
   getCached(): void {
     if (this.displaySingle) {
       this.displaySingle = false;
     }
-    this.jokeService.getAllCachedJokes()
-      .subscribe(next => {
-        const temp: Joke[] = [];
-        for (const x of next) {
-          const jokeHolder: Joke = new Joke(x);
-          temp.push(jokeHolder);
-        }
-        this.jokes = temp;
-      });
+    this.jokes = this.jokeService.getJokesArray();
   }
 
   getSearchResults(searchString: string): void {
     if (this.displaySingle) {
       this.displaySingle = false;
     }
-    this.jokeService.getSearchResults(searchString)
-      .subscribe(next => {
-        const temp: Joke[] = [];
-        for (const x of next) {
-          const jokeHolder: Joke = new Joke(x);
-          temp.push(jokeHolder);
-        }
-        this.jokes = temp;
-      });
+    this.jokes = this.jokeService.getJokesArray(searchString);
   }
 
   ngOnInit() {
-
-    this.jokeService.getRandomJoke()
-      .subscribe(jk => {
-        this.joke = new Joke (jk);
-      });
-    this.jokeService.getAllCachedJokes()
-      .subscribe(next => {
-        const temp: Joke[] = [];
-        for (const x of next) {
-          const jokeHolder: Joke = new Joke(x);
-          temp.push(jokeHolder);
-        }
-        this.jokes = temp;
-      });
+    this.joke = this.jokeService.getJoke();
+    this.jokes = this.jokeService.getJokesArray();
   }
+
+  //   this.jokeService.getRandomJoke()
+  //     .subscribe(jk => {
+  //       this.joke = new Joke (jk);
+  //     });
+  //   this.jokeService.getAllCachedJokes()
+  //     .subscribe(next => {
+  //       const temp: Joke[] = [];
+  //       for (const x of next) {
+  //         const jokeHolder: Joke = new Joke(x);
+  //         temp.push(jokeHolder);
+  //       }
+  //       this.jokes = temp;
+  //     });
+  // }
 }
